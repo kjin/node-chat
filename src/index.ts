@@ -12,9 +12,10 @@ const address = process.argv[3];
 const username = process.argv[4];
 
 if (instanceType === 'server') {
-} else if (instanceType === 'client') {
-  ChatDisplay.startDisplay(address);
+} else if (instanceType === 'clientMessenger') {
   Messenger.startMessenger(address, username);
+}else if (instanceType === 'clientDisplay'){
+  ChatDisplay.startDisplay(address);
 } else {
   console.log(`Expected 'server' or 'client' but got: '${process.argv[2]}'`);
   process.exit(1);
