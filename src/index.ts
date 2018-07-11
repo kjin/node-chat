@@ -8,6 +8,7 @@ if (process.argv.length < 4) {
 }
 const instanceType = process.argv[2];
 const address = process.argv[3];
+const username = process.argv[4];
 
 if (instanceType === 'server') {
   new Server(address).start();
