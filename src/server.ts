@@ -1,9 +1,27 @@
-export class Server {
-  private localAddress: string;
+import {Message} from './Message';
+const express = require('express');
+const app = express();
 
-  constructor(localAddress: string) {
-    this.localAddress = localAddress;
+let messages: Message[] = [];
+let messageCount: number = 0;
+
+app.get('/get', (req, res) => {
+  res.send(messages.slice(req.body.msgNo, messages.length));
+});
+
+app.user(bodyParser());
+
+app.post('/send', (req, res) => {
+  let date = new Date();
+  let currMessageCount = messageCount++;
+  let message = {
+    sender: req.body.sender,
+    data: req.body.content,
+    id: currMessageCount,
+    time: date.getTime()
   }
+  messages[currMessageCount] = message;
 
-  start() {}
-}
+});
+app.listen(3000);
+

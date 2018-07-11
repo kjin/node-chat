@@ -1,5 +1,3 @@
-import { Server } from "./server";
-
 // Check to see that we have enough arguments.
 if (process.argv.length < 4) {
   console.log(`Usage: node ${process.argv[1]} (server|client) [address]`);
@@ -11,7 +9,6 @@ const address = process.argv[3];
 const username = process.argv[4];
 
 if (instanceType === 'server') {
-  new Server(address).start();
 } else if (instanceType === 'client') {
   // ???
 } else {

@@ -20,5 +20,8 @@
     "@types/node": "^10.5.1",
     "gts": "^0.7.1",
     "typescript": "~2.8.0"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }
