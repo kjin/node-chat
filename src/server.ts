@@ -1,17 +1,19 @@
 import {Message} from './Message';
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
 
 let messages: Message[] = [];
 let messageCount: number = 0;
 
-app.get('/get', (req, res) => {
-  res.send(messages.slice(req.body.msgNo, messages.length));
+app.get('/messages', (req, res) => {
+  res.send(messages.slice(req.query.msgNo, messages.length));
 });
 
-app.user(bodyParser());
+app.use(bodyParser.json());
 
-app.post('/send', (req, res) => {
+app.post('/message', (req, res) => {
   let date = new Date();
   let currMessageCount = messageCount++;
   let message = {
@@ -21,7 +23,7 @@ app.post('/send', (req, res) => {
     time: date.getTime()
   }
   messages[currMessageCount] = message;
-
+  res.send();
 });
 app.listen(3000);
 
