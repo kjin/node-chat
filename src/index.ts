@@ -1,3 +1,6 @@
+import * as Messenger from "./Messenger"
+import* as ChatDisplay from "./ChatDisplay"
+
 // Check to see that we have enough arguments.
 if (process.argv.length < 4) {
   console.log(`Usage: node ${process.argv[1]} (server|client) [address]`);
@@ -10,7 +13,8 @@ const username = process.argv[4];
 
 if (instanceType === 'server') {
 } else if (instanceType === 'client') {
-  // ???
+  ChatDisplay.startDisplay(address);
+  Messenger.startMessenger(address, username);
 } else {
   console.log(`Expected 'server' or 'client' but got: '${process.argv[2]}'`);
   process.exit(1);
